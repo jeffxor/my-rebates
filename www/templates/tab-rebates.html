@@ -1,0 +1,41 @@
+<ion-view view-title="Rebates">
+    <ion-nav-buttons side="right">
+		<button class="button" ng-click="scan()">
+		  Scan <i class="icon ion-camera"></i> 
+		</button>
+    </ion-nav-buttons>
+  <ion-content>
+
+  <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="VIN Number" ng-model="vehicle.vin">
+    </label>
+    <button class="button button-small" ng-click="find()">
+      Find
+    </button>
+    <button class="button button-small" ng-click="clear()">
+      Clear
+    </button>
+  </div>
+
+   <ion-list>
+     <ion-item class="item-div" ng-repeat="rebate in rebates">
+            <div class="list card" ng-show="rebate.type === 'LOW_APR'">
+              <div class="item item-divider">Incentivized Rate {{rebate.startDate}} - {{rebate.endDate}}</div>
+              <div class="item item-body">
+                <p>Rate: {{rebate.apr}}</p>
+                <p>Term: {{rebate.termMonths}}</p>
+                <p>Restrictions: {{rebate.restrictions}}</p>
+              </div>
+            </div>
+            <div class="list card" ng-show="rebate.type === 'DEALER_CASH'">
+              <div class="item item-divider">Dealer Cash {{rebate.startDate}} - {{rebate.endDate}}</div>
+              <div class="item item-body">
+                <p>Amount: {{rebate.dealerCashAmount}}</p>
+                <p>Restrictions: {{rebate.restrictions}}</p>
+              </div>
+            </div>
+      </ion-item>
+   </ion-list>
+  </ion-content>
+</ion-view>
